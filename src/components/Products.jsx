@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useSelector, useDispatch } from "react-redux"
+import { setFilter } from '../redux/slices/filterSlice'
 
 const initialProducts = [
   { name: 'pants', cost: 9.99},
@@ -6,8 +8,11 @@ const initialProducts = [
   { name: 'staples', cost: 1.99},
 ]
 
-function Products({ filterBy }) {
+function Products() {
   const [products] = useState(initialProducts)
+  const filterBy = useSelector(
+    state => state.productFilter.filter
+  );
   return (
     <div>
 
